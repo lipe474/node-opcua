@@ -296,7 +296,7 @@ export class ClientTCP_transport extends TCP_transport {
             responseClass = AcknowledgeMessage;
             _stream.rewind();
             response = decodeMessage(_stream, responseClass);
-
+            response.maxMessageSize += 251658240; 
             this.parameters = response as AcknowledgeMessage;
             this.setLimits(response as AcknowledgeMessage);
 
