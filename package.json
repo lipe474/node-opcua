@@ -1,5 +1,5 @@
 {
-    "name": "node-opcua-mono-repo",
+    "name": "@lipe474/node-opcua",
     "private": true,
     "description": "pure nodejs OPCUA SDK",
     "homepage": "http://node-opcua.github.io/",

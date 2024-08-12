@@ -166,7 +166,6 @@ export class ClientTCP_transport extends TCP_transport {
     }
 
     public connect(endpointUrl: string, callback: ErrorCallback): void {
-
         const ep = parseEndpointUrl(endpointUrl);
         this.endpointUrl = endpointUrl;
         this.serverUri = "urn:" + gHostname + ":Sample";
@@ -219,7 +218,7 @@ export class ClientTCP_transport extends TCP_transport {
                 if (!err) {
                     /* istanbul ignore next */
                     if (!this._socket) {
-                        return callback(new Error("Abandoned"));                        
+                        return callback(new Error("Abandoned"));
                     }
                     // install error handler to detect connection break
                     this._socket.on("error", _on_socket_error_after_connection);
@@ -296,7 +295,9 @@ export class ClientTCP_transport extends TCP_transport {
             responseClass = AcknowledgeMessage;
             _stream.rewind();
             response = decodeMessage(_stream, responseClass);
-            response.maxMessageSize += 251658240; 
+            if ("maxMessageSize" in response) {
+                (response as any).maxMessageSize += 251658240;
+            }
             this.parameters = response as AcknowledgeMessage;
             this.setLimits(response as AcknowledgeMessage);
 
