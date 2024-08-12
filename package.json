@@ -42,7 +42,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git://github.com/node-opcua/node-opcua.git"
+        "url": "git://github.com/lipe474/node-opcua"
     },
     "keywords": [
         "OPCUA",
